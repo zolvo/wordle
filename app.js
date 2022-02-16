@@ -46,6 +46,7 @@ const guessRows = [
 
 let currentRow = 0;
 let currentTile = 0;
+let isGameOver = false;
 
 guessRows.forEach((guessRow, guessRowIndex) => {
   const rowElement = document.createElement("div");
@@ -118,11 +119,26 @@ const deleteLetter = () => {
 const checkRow = () => {
   const guess = guessRows[currentRow].join("");
 
-  if (currentTile === 5) {
+  if (currentTile > 4) {
     console.log("guess is " + guess, "wordle is " + wordle);
 
+    flipTile();
+
     if (wordle === guess) {
-      showMessage("MAGNIFINICENT");
+      showMessage("Magnificent");
+      isGameOver = true;
+      return;
+    } else {
+      if (currentRow >= 5) {
+        isGameOver = false;
+        showMessage("Game Over");
+        return;
+      }
+
+      if (currentRow < 5) {
+        currentRow++;
+        currentTile = 0;
+      }
     }
   }
 };
@@ -133,4 +149,32 @@ const showMessage = (message) => {
   messageDisplay.append(messageElement);
 
   setTimeout(() => messageDisplay.removeChild(messageElement), 2000);
+};
+
+const addColorToKey = (keyLetter, color) => {
+  const key = document.getElementById(keyLetter);
+  key.classList.add(color);
+};
+
+const flipTile = () => {
+  const rowTiles = document.querySelector("#guessRow-" + currentRow).childNodes;
+
+  rowTiles.forEach((tile, index) => {
+    const dataLetter = tile.getAttribute("data");
+
+    setTimeout(() => {
+      tile.classList.add("flip");
+
+      if (dataLetter === wordle[index]) {
+        tile.classList.add("green-overlay");
+        addColorToKey(dataLetter, "green-overlay");
+      } else if (wordle.includes(dataLetter)) {
+        tile.classList.add("yellow-overlay");
+        addColorToKey(dataLetter, "yellow-overlay");
+      } else {
+        tile.classList.add("grey-overlay");
+        addColorToKey(dataLetter, "grey-overlay");
+      }
+    }, 500 * index);
+  });
 };
