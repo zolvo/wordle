@@ -5,7 +5,7 @@ const messageDisplay = document.querySelector(".message-container");
 let wordle;
 
 const getWordle = () => {
-  fetch("https://random-words5.p.rapidapi.com/getMultipleRandom/word")
+  fetch("https://wordle-zolvo.vercel.app/word")
     .then((response) => response.json())
     .then((json) => {
       console.log(json);
@@ -136,9 +136,7 @@ const checkRow = () => {
   console.log("guess", guess);
 
   if (currentTile > 4) {
-    fetch(
-      `https://twinword-word-graph-dictionary.p.rapidapi.com/association/check/?word=${guess}`
-    )
+    fetch(`https://wordle-zolvo.vercel.app/check/?word=${guess}`)
       .then((response) => response.json())
       .then((json) => {
         console.log(json);
