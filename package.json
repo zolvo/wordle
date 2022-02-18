@@ -7,16 +7,8 @@
     "start": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/zolvo/wordle.git"
-  },
   "author": "zolvo",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/zolvo/wordle/issues"
-  },
-  "homepage": "https://github.com/zolvo/wordle#readme",
   "dependencies": {
     "axios": "^0.26.0",
     "cors": "^2.8.5",
