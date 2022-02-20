@@ -15,7 +15,8 @@ app.get("/word", (req, res) => {
     params: { count: "5", wordLength: "5" },
     headers: {
       "x-rapidapi-host": "random-words5.p.rapidapi.com",
-      "x-rapidapi-key": process.env.RAPID_API_KEY,
+      // "x-rapidapi-key": process.env.RAPID_API_KEY,
+      "x-rapidapi-key": "53afbd9c2amshe47ccbe0f6f8492p1ce6c2jsnb8a0510b39ea",
     },
   };
 
@@ -39,7 +40,8 @@ app.get("/check", (req, res) => {
     params: { entry: word },
     headers: {
       "x-rapidapi-host": "twinword-word-graph-dictionary.p.rapidapi.com",
-      "x-rapidapi-key": process.env.RAPID_API_KEY,
+      // "x-rapidapi-key": process.env.RAPID_API_KEY,
+      "x-rapidapi-key": "53afbd9c2amshe47ccbe0f6f8492p1ce6c2jsnb8a0510b39ea",
     },
   };
 

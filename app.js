@@ -136,7 +136,7 @@ const checkRow = () => {
   console.log("guess", guess);
 
   if (currentTile > 4) {
-    fetch(`http://localhost:8000/check/?word=${guess}`)
+    fetch(`https://wordle-zolvo.vercel.app/check/?word=${guess}`)
       .then((response) => response.json())
       .then((json) => {
         console.log(json);
